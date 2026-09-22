@@ -6,356 +6,157 @@
 <meta name="theme-color" content="#eef2ff">
 <title>Registros</title>
 <style>
-  * {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-  }
-
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body { margin: 0; padding: 0; }
-
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                 "Helvetica Neue", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 45%, #f8fafc 100%);
     background-attachment: fixed;
-    color: #1e293b;
-    min-height: 100vh;
+    color: #1e293b; min-height: 100vh;
     padding: 22px 14px calc(40px + env(safe-area-inset-bottom));
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
+    font-size: 16px; -webkit-font-smoothing: antialiased;
   }
-
-  /* ---------- Encabezado ---------- */
   header { margin-bottom: 16px; padding: 0 4px; }
+  h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 4px; }
+  .sub { margin: 0; font-size: 14px; color: #64748b; }
 
-  h1 {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0 0 4px;
-  }
-
-  .sub {
-    margin: 0;
-    font-size: 14px;
-    color: #64748b;
-  }
-
-  /* ---------- Tarjetas ---------- */
   .card {
-    background: #fff;
-    border-radius: 18px;
-    padding: 16px;
-    margin-bottom: 16px;
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06),
-                0 1px 3px rgba(15, 23, 42, 0.04);
+    background: #fff; border-radius: 18px; padding: 16px; margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(15,23,42,.06), 0 1px 3px rgba(15,23,42,.04);
   }
-
   .field { margin-bottom: 14px; }
-
   .field label {
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: #94a3b8;
-    margin-bottom: 7px;
-    padding-left: 2px;
+    display: block; font-size: 11px; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; color: #94a3b8; margin-bottom: 7px; padding-left: 2px;
   }
-
   .row { display: flex; gap: 8px; }
-
-  /* ---------- Select ---------- */
   .select-wrap { position: relative; flex: 1; min-width: 0; }
-
   .select-wrap::after {
-    content: "";
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid #94a3b8;
-    border-bottom: 2px solid #94a3b8;
-    transform: translateY(-70%) rotate(45deg);
-    pointer-events: none;
+    content: ""; position: absolute; right: 16px; top: 50%;
+    width: 8px; height: 8px;
+    border-right: 2px solid #94a3b8; border-bottom: 2px solid #94a3b8;
+    transform: translateY(-70%) rotate(45deg); pointer-events: none;
   }
-
   select {
-    width: 100%;
-    appearance: none;
-    -webkit-appearance: none;
-    padding: 14px 38px 14px 14px;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 13px;
-    background: #f8fafc;
-    font-size: 15px;
-    font-weight: 500;
-    font-family: inherit;
-    color: #1e293b;
-    transition: border-color .15s, box-shadow .15s, background .15s;
+    width: 100%; appearance: none; -webkit-appearance: none;
+    padding: 14px 38px 14px 14px; border: 1.5px solid #e2e8f0; border-radius: 13px;
+    background: #f8fafc; font-size: 15px; font-weight: 500; font-family: inherit;
+    color: #1e293b; transition: border-color .15s, box-shadow .15s, background .15s;
   }
-
   select.placeholder { color: #94a3b8; font-weight: 400; }
-
   select:focus {
-    outline: none;
-    border-color: #6366f1;
-    background: #fff;
-    box-shadow: 0 0 0 3.5px rgba(99, 102, 241, 0.14);
+    outline: none; border-color: #6366f1; background: #fff;
+    box-shadow: 0 0 0 3.5px rgba(99,102,241,.14);
   }
-
-  /* ---------- Botón "+" ---------- */
   .btn-add {
-    flex: 0 0 52px;
-    width: 52px;
-    height: 52px;
-    border: none;
-    border-radius: 13px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    color: #fff;
-    font-size: 26px;
-    font-weight: 300;
-    line-height: 1;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    flex: 0 0 52px; width: 52px; height: 52px; border: none; border-radius: 13px;
+    background: linear-gradient(135deg,#6366f1,#8b5cf6); color: #fff;
+    font-size: 26px; font-weight: 300; line-height: 1; cursor: pointer;
+    display: grid; place-items: center;
+    box-shadow: 0 4px 12px rgba(99,102,241,.35);
     transition: transform .12s ease, box-shadow .12s;
   }
-
-  .btn-add:active {
-    transform: scale(0.93);
-    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
-  }
-
-  /* ---------- Botón principal ---------- */
+  .btn-add:active { transform: scale(.93); }
   .btn-primary {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    margin-top: 4px;
-    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
+    width: 100%; padding: 15px; border: none; border-radius: 14px;
+    background: linear-gradient(135deg,#6366f1,#8b5cf6); color: #fff;
+    font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer;
+    margin-top: 4px; box-shadow: 0 6px 18px rgba(99,102,241,.35);
     transition: transform .12s ease, box-shadow .12s;
   }
+  .btn-primary:active { transform: scale(.98); }
+  .btn-primary:disabled { opacity: .6; cursor: wait; }
 
-  .btn-primary:active {
-    transform: scale(0.98);
-    box-shadow: 0 3px 10px rgba(99, 102, 241, 0.3);
-  }
-
-  /* ---------- Tabla ---------- */
   .card-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 0 12px;
-    padding: 0 2px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 0 0 12px; padding: 0 2px;
   }
-
-  .card-title h2 {
-    font-size: 15px;
-    font-weight: 700;
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
-
+  .card-title h2 { font-size: 15px; font-weight: 700; margin: 0; }
   .badge {
-    font-size: 12px;
-    font-weight: 700;
-    color: #6366f1;
-    background: #eef2ff;
-    padding: 3px 10px;
-    border-radius: 999px;
+    font-size: 12px; font-weight: 700; color: #6366f1; background: #eef2ff;
+    padding: 3px 10px; border-radius: 999px;
   }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-  }
-
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
   thead th {
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #94a3b8;
-    text-align: left;
-    padding: 0 6px 9px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: #94a3b8; text-align: left; padding: 0 6px 9px;
   }
-
   thead th:last-child { text-align: center; }
-
-  tbody tr {
-    border-top: 1px solid #f1f5f9;
-  }
-
+  tbody tr { border-top: 1px solid #f1f5f9; }
   tbody td {
-    padding: 13px 6px;
-    font-size: 13.5px;
-    vertical-align: middle;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    padding: 13px 6px; font-size: 13.5px; vertical-align: middle;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
-
   .c-nombre { font-weight: 600; color: #1e293b; }
-  .c-prod   { color: #475569; }
-  .c-fecha  {
-    color: #94a3b8;
-    font-size: 11.5px;
-    white-space: normal;
-    line-height: 1.35;
-  }
+  .c-prod { color: #475569; }
+  .c-fecha { color: #94a3b8; font-size: 11.5px; white-space: normal; line-height: 1.35; }
   .c-acc { text-align: center; padding-right: 0 !important; }
-
-  .col-nombre { width: 32%; }
-  .col-prod   { width: 28%; }
-  .col-fecha  { width: 26%; }
-  .col-acc    { width: 14%; }
-
+  .col-nombre { width: 32%; } .col-prod { width: 28%; }
+  .col-fecha { width: 26%; } .col-acc { width: 14%; }
   .btn-del {
-    width: 34px;
-    height: 34px;
-    border: none;
-    border-radius: 11px;
-    background: #fee2e2;
-    color: #ef4444;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1;
-    display: inline-grid;
-    place-items: center;
-    cursor: pointer;
+    width: 34px; height: 34px; border: none; border-radius: 11px;
+    background: #fee2e2; color: #ef4444; font-size: 15px; font-weight: 700;
+    display: inline-grid; place-items: center; cursor: pointer;
     transition: transform .12s, background .12s;
   }
-
-  .btn-del:active {
-    transform: scale(0.88);
-    background: #fecaca;
-  }
-
+  .btn-del:active { transform: scale(.88); background: #fecaca; }
   .empty td {
-    text-align: center;
-    color: #cbd5e1;
-    font-size: 14px;
-    padding: 34px 0;
+    text-align: center; color: #cbd5e1; font-size: 14px; padding: 34px 0;
     white-space: normal;
   }
+  .estado {
+    font-size: 12px; color: #94a3b8; text-align: center;
+    margin: -4px 0 12px; min-height: 16px;
+  }
+  .estado.ok { color: #10b981; }
+  .estado.err { color: #ef4444; }
 
   @keyframes pop {
     from { opacity: 0; transform: translateY(-8px); }
     to   { opacity: 1; transform: translateY(0); }
   }
+  tbody tr.new { animation: pop .28s cubic-bezier(.34,1.3,.64,1); }
 
-  tbody tr.new { animation: pop .28s cubic-bezier(.34, 1.3, .64, 1); }
-
-  /* ---------- Modal ---------- */
   .overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    background: rgba(15, 23, 42, 0.45);
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .22s ease;
+    position: fixed; inset: 0; z-index: 50; background: rgba(15,23,42,.45);
+    -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+    display: flex; align-items: flex-end; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity .22s ease;
   }
-
   .overlay.show { opacity: 1; pointer-events: auto; }
-
   .modal {
-    width: 100%;
-    max-width: 480px;
-    background: #fff;
-    border-radius: 24px 24px 0 0;
-    padding: 24px 18px calc(22px + env(safe-area-inset-bottom));
-    transform: translateY(101%);
-    transition: transform .3s cubic-bezier(.32, .72, 0, 1);
+    width: 100%; max-width: 480px; background: #fff;
+    border-radius: 24px 24px 0 0; padding: 24px 18px calc(22px + env(safe-area-inset-bottom));
+    transform: translateY(101%); transition: transform .3s cubic-bezier(.32,.72,0,1);
   }
-
   .overlay.show .modal { transform: translateY(0); }
-
-  .modal h3 {
-    margin: 0 0 16px;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-
+  .modal h3 { margin: 0 0 16px; font-size: 18px; font-weight: 700; }
   .modal input {
-    width: 100%;
-    padding: 15px 14px;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 13px;
-    background: #f8fafc;
-    font-size: 16px;
-    font-family: inherit;
-    color: #1e293b;
+    width: 100%; padding: 15px 14px; border: 1.5px solid #e2e8f0; border-radius: 13px;
+    background: #f8fafc; font-size: 16px; font-family: inherit; color: #1e293b;
     margin-bottom: 16px;
   }
-
   .modal input:focus {
-    outline: none;
-    border-color: #6366f1;
-    background: #fff;
-    box-shadow: 0 0 0 3.5px rgba(99, 102, 241, 0.14);
+    outline: none; border-color: #6366f1; background: #fff;
+    box-shadow: 0 0 0 3.5px rgba(99,102,241,.14);
   }
-
   .modal-actions { display: flex; gap: 10px; }
-
   .btn-ghost {
-    flex: 1;
-    padding: 15px;
-    border: none;
-    border-radius: 14px;
-    background: #f1f5f9;
-    color: #475569;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: transform .12s;
+    flex: 1; padding: 15px; border: none; border-radius: 14px;
+    background: #f1f5f9; color: #475569; font-size: 16px; font-weight: 600;
+    font-family: inherit; cursor: pointer;
   }
-
-  .btn-ghost:active { transform: scale(0.97); }
-
   .modal-actions .btn-primary { flex: 1.4; margin-top: 0; }
 
-  /* ---------- Toast ---------- */
   .toast {
-    position: fixed;
-    left: 50%;
-    bottom: calc(26px + env(safe-area-inset-bottom));
-    transform: translate(-50%, 16px);
-    background: #1e293b;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 13px;
-    font-size: 14px;
-    font-weight: 500;
-    z-index: 100;
-    opacity: 0;
-    pointer-events: none;
+    position: fixed; left: 50%; bottom: calc(26px + env(safe-area-inset-bottom));
+    transform: translate(-50%, 16px); background: #1e293b; color: #fff;
+    padding: 12px 20px; border-radius: 13px; font-size: 14px; font-weight: 500;
+    z-index: 100; opacity: 0; pointer-events: none;
     transition: opacity .25s, transform .25s;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
-    max-width: 88vw;
-    text-align: center;
+    box-shadow: 0 8px 24px rgba(15,23,42,.25);
+    max-width: 88vw; text-align: center;
   }
-
   .toast.show { opacity: 1; transform: translate(-50%, 0); }
 </style>
 </head>
@@ -363,10 +164,9 @@
 
 <header>
   <h1>Registros</h1>
-  <p class="sub">Elige una persona y un producto para registrar</p>
+  <p class="sub">Los datos se sincronizan en la nube ☁️</p>
 </header>
 
-<!-- ===== Formulario ===== -->
 <section class="card">
   <div class="field">
     <label for="personaSelect">Persona</label>
@@ -391,36 +191,30 @@
   <button class="btn-primary" id="btnAgregar">Agregar registro</button>
 </section>
 
-<!-- ===== Tabla ===== -->
 <section class="card">
   <div class="card-title">
     <h2>Historial</h2>
     <span class="badge" id="contador">0</span>
   </div>
+  <p class="estado" id="estado">Conectando…</p>
 
   <table>
     <colgroup>
-      <col class="col-nombre">
-      <col class="col-prod">
-      <col class="col-fecha">
-      <col class="col-acc">
+      <col class="col-nombre"><col class="col-prod">
+      <col class="col-fecha"><col class="col-acc">
     </colgroup>
     <thead>
       <tr>
-        <th>Persona</th>
-        <th>Producto</th>
-        <th>Fecha</th>
-        <th></th>
+        <th>Persona</th><th>Producto</th><th>Fecha</th><th></th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
 </section>
 
-<!-- ===== Modal ===== -->
 <div class="overlay" id="overlay">
   <div class="modal" id="modal">
-    <h3 id="modalTitle">Nueva persona</h3>
+    <h3 id="modalTitle">Nuevo</h3>
     <input id="modalInput" type="text" autocomplete="off" enterkeyhint="done">
     <div class="modal-actions">
       <button class="btn-ghost" id="modalCancel">Cancelar</button>
@@ -429,245 +223,283 @@
   </div>
 </div>
 
-<!-- ===== Toast ===== -->
 <div class="toast" id="toast"></div>
 
-<script>
-(function () {
-  "use strict";
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getFirestore, collection, addDoc, deleteDoc, doc,
+  onSnapshot, query, orderBy
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  /* ================= Estado ================= */
-  const LS_KEY = "registros-app-v1";
-  let state = { personas: [], productos: [], registros: [] };
-  let animateId = null;
+/* =========================================================
+   CONFIGURACIÓN DE FIREBASE (la tuya)
+   ========================================================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyB2GVyeqbglABD_YQRP4e-vPl-sVLmod_8",
+  authDomain: "compras-98ac8.firebaseapp.com",
+  projectId: "compras-98ac8",
+  storageBucket: "compras-98ac8.firebasestorage.app",
+  messagingSenderId: "167749044668",
+  appId: "1:167749044668:web:21b664911f1e2f3399c3b9",
+  measurementId: "G-NR425409GG"
+};
 
-  /* ================= Referencias ================= */
-  const personaSel = document.getElementById("personaSelect");
-  const prodSel    = document.getElementById("productoSelect");
-  const tbody      = document.getElementById("tbody");
-  const contador   = document.getElementById("contador");
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
 
-  const overlay    = document.getElementById("overlay");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalInput = document.getElementById("modalInput");
+const COL_PERSONAS  = "personas";
+const COL_PRODUCTOS = "productos";
+const COL_REGISTROS = "registros";
 
-  const toastEl    = document.getElementById("toast");
+/* ---------- Referencias ---------- */
+const personaSel = document.getElementById("personaSelect");
+const prodSel    = document.getElementById("productoSelect");
+const tbody      = document.getElementById("tbody");
+const contador   = document.getElementById("contador");
+const estadoEl   = document.getElementById("estado");
 
-  /* ================= Utilidades ================= */
-  const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+const overlay    = document.getElementById("overlay");
+const modalTitle = document.getElementById("modalTitle");
+const modalInput = document.getElementById("modalInput");
 
-  function esc(str) {
-    return String(str).replace(/[&<>"']/g, c => (
-      { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
-    ));
+const toastEl = document.getElementById("toast");
+
+/* ---------- Utilidades ---------- */
+const esc = s => String(s).replace(/[&<>"']/g, c => (
+  {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]
+));
+
+function fmtFecha(ts) {
+  const d = new Date(ts);
+  const p = n => String(n).padStart(2, "0");
+  return p(d.getDate()) + "/" + p(d.getMonth()+1) + "/" +
+         String(d.getFullYear()).slice(2) + " " +
+         p(d.getHours()) + ":" + p(d.getMinutes());
+}
+
+let toastTimer;
+function toast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1900);
+}
+
+function setEstado(txt, cls) {
+  estadoEl.textContent = txt;
+  estadoEl.className = "estado" + (cls ? " " + cls : "");
+}
+
+/* ---------- Selects ---------- */
+function fillSelect(sel, items, placeholder, emptyMsg) {
+  const prev = sel.value;
+  sel.innerHTML = "";
+  sel.appendChild(new Option(items.length ? placeholder : emptyMsg, ""));
+  items.forEach(it => sel.appendChild(new Option(it, it)));
+  sel.options[0].disabled = true;
+  sel.value = items.includes(prev) ? prev : "";
+  sel.classList.toggle("placeholder", !sel.value);
+}
+
+[personaSel, prodSel].forEach(s => {
+  s.addEventListener("change", () => s.classList.toggle("placeholder", !s.value));
+});
+
+/* ---------- Estado local (espejo de Firestore) ---------- */
+let personas  = [];
+let productos = [];
+let registros = [];
+let animateId = null;
+let primeraCarga = true;
+
+/* ---------- Render tabla ---------- */
+function renderTabla() {
+  tbody.innerHTML = "";
+  contador.textContent = registros.length;
+
+  if (registros.length === 0) {
+    tbody.innerHTML =
+      '<tr class="empty"><td colspan="4">Todavía no hay registros<br>Añade el primero arriba ☝️</td></tr>';
+    return;
   }
 
-  function fmtFecha(d) {
-    const p = n => String(n).padStart(2, "0");
-    return p(d.getDate()) + "/" + p(d.getMonth() + 1) + "/" +
-           String(d.getFullYear()).slice(2) + " " +
-           p(d.getHours()) + ":" + p(d.getMinutes());
-  }
-
-  let toastTimer;
-  function toast(msg) {
-    toastEl.textContent = msg;
-    toastEl.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1900);
-  }
-
-  /* ================= Persistencia ================= */
-  function load() {
-    try {
-      const raw = localStorage.getItem(LS_KEY);
-      if (raw) {
-        const data = JSON.parse(raw);
-        state.personas  = Array.isArray(data.personas)  ? data.personas  : [];
-        state.productos = Array.isArray(data.productos) ? data.productos : [];
-        state.registros = Array.isArray(data.registros) ? data.registros : [];
-      }
-    } catch (e) { /* datos corruptos: se ignora */ }
-  }
-
-  function save() {
-    try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) {}
-  }
-
-  /* ================= Selects ================= */
-  function fillSelect(sel, items, placeholder, emptyMsg) {
-    const prev = sel.value;
-    sel.innerHTML = "";
-    sel.appendChild(new Option(items.length ? placeholder : emptyMsg, ""));
-
-    items.forEach(function (item) {
-      sel.appendChild(new Option(item, item));
-    });
-
-    sel.options[0].disabled = true;
-    sel.value = items.indexOf(prev) !== -1 ? prev : "";
-    sel.classList.toggle("placeholder", !sel.value);
-  }
-
-  [personaSel, prodSel].forEach(function (s) {
-    s.addEventListener("change", function () {
-      s.classList.toggle("placeholder", !s.value);
-    });
+  registros.forEach(r => {
+    const tr = document.createElement("tr");
+    if (r.id === animateId) tr.classList.add("new");
+    tr.innerHTML =
+      '<td class="c-nombre" title="' + esc(r.persona) + '">' + esc(r.persona) + '</td>' +
+      '<td class="c-prod" title="' + esc(r.producto) + '">' + esc(r.producto) + '</td>' +
+      '<td class="c-fecha">' + esc(fmtFecha(r.fecha)) + '</td>' +
+      '<td class="c-acc"><button class="btn-del" data-id="' + r.id +
+        '" aria-label="Eliminar">✕</button></td>';
+    tbody.appendChild(tr);
   });
 
-  /* ================= Render tabla ================= */
-  function renderTabla() {
-    tbody.innerHTML = "";
-    contador.textContent = state.registros.length;
+  animateId = null;
+}
 
-    if (state.registros.length === 0) {
-      tbody.innerHTML =
-        '<tr class="empty"><td colspan="4">Todavía no hay registros<br>Añade el primero arriba ☝️</td></tr>';
-      return;
+/* ---------- Sincronización en tiempo real ---------- */
+onSnapshot(
+  query(collection(db, COL_PERSONAS), orderBy("nombre")),
+  snap => {
+    personas = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    fillSelect(personaSel, personas.map(p => p.nombre),
+               "Selecciona una persona", "Sin personas — toca +");
+  },
+  err => {
+    console.error(err);
+    setEstado("Error al conectar: " + err.message, "err");
+  }
+);
+
+onSnapshot(
+  query(collection(db, COL_PRODUCTOS), orderBy("nombre")),
+  snap => {
+    productos = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    fillSelect(prodSel, productos.map(p => p.nombre),
+               "Selecciona un producto", "Sin productos — toca +");
+  },
+  err => console.error(err)
+);
+
+onSnapshot(
+  query(collection(db, COL_REGISTROS), orderBy("fecha", "desc")),
+  snap => {
+    const prevIds = new Set(registros.map(r => r.id));
+    registros = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+    if (!primeraCarga) {
+      const nuevos = registros.filter(r => !prevIds.has(r.id));
+      if (nuevos.length) animateId = nuevos[0].id;
     }
+    primeraCarga = false;
 
-    // El último registrado aparece arriba
-    const lista = state.registros.slice().reverse();
+    renderTabla();
+    setEstado("● Sincronizado", "ok");
+  },
+  err => {
+    console.error(err);
+    setEstado("Error al conectar: " + err.message, "err");
+  }
+);
 
-    lista.forEach(function (r) {
-      const tr = document.createElement("tr");
-      if (r.id === animateId) tr.classList.add("new");
+/* ---------- Agregar registro ---------- */
+document.getElementById("btnAgregar").addEventListener("click", async function () {
+  const persona  = personaSel.value;
+  const producto = prodSel.value;
 
-      tr.innerHTML =
-        '<td class="c-nombre" title="' + esc(r.persona) + '">' + esc(r.persona) + "</td>" +
-        '<td class="c-prod" title="' + esc(r.producto) + '">' + esc(r.producto) + "</td>" +
-        '<td class="c-fecha">' + esc(r.fecha) + "</td>" +
-        '<td class="c-acc"><button class="btn-del" data-id="' + r.id +
-          '" aria-label="Eliminar registro">✕</button></td>';
+  if (!persona)  { toast("Selecciona una persona");  return; }
+  if (!producto) { toast("Selecciona un producto");  return; }
 
-      tbody.appendChild(tr);
+  this.disabled = true;
+  try {
+    await addDoc(collection(db, COL_REGISTROS), {
+      persona, producto, fecha: Date.now()
     });
-
-    animateId = null;
-  }
-
-  function render() {
-    fillSelect(personaSel, state.personas, "Selecciona una persona", "Sin personas — toca +");
-    fillSelect(prodSel, state.productos, "Selecciona un producto", "Sin productos — toca +");
-    renderTabla();
-  }
-
-  /* ================= Agregar registro ================= */
-  document.getElementById("btnAgregar").addEventListener("click", function () {
-    const persona  = personaSel.value;
-    const producto = prodSel.value;
-
-    if (!persona)  { toast("Selecciona una persona");  return; }
-    if (!producto) { toast("Selecciona un producto");  return; }
-
-    const nuevo = {
-      id: uid(),
-      persona: persona,
-      producto: producto,
-      fecha: fmtFecha(new Date())
-    };
-
-    state.registros.push(nuevo);   // el más reciente al final
-    animateId = nuevo.id;
-    save();
-    renderTabla();
     toast("Registro agregado");
-  });
-
-  /* ================= Eliminar registro ================= */
-  tbody.addEventListener("click", function (e) {
-    const btn = e.target.closest(".btn-del");
-    if (!btn) return;
-
-    const id = btn.dataset.id;
-    const tr = btn.closest("tr");
-
-    tr.style.transition = "opacity .18s, transform .18s";
-    tr.style.opacity = "0";
-    tr.style.transform = "translateX(40px)";
-
-    setTimeout(function () {
-      state.registros = state.registros.filter(r => r.id !== id);
-      save();
-      renderTabla();
-      toast("Registro eliminado");
-    }, 170);
-  });
-
-  /* ================= Modal ================= */
-  let modalCallback = null;
-
-  function openModal(title, placeholder, cb) {
-    modalTitle.textContent = title;
-    modalInput.placeholder = placeholder;
-    modalInput.value = "";
-    modalCallback = cb;
-    overlay.classList.add("show");
-    setTimeout(function () { modalInput.focus(); }, 260);
+  } catch (e) {
+    console.error(e);
+    toast("Error al guardar: " + e.message);
+  } finally {
+    this.disabled = false;
   }
+});
 
-  function closeModal() {
-    overlay.classList.remove("show");
-    modalInput.blur();
-    modalCallback = null;
+/* ---------- Eliminar registro ---------- */
+tbody.addEventListener("click", async function (e) {
+  const btn = e.target.closest(".btn-del");
+  if (!btn) return;
+
+  const id = btn.dataset.id;
+  const tr = btn.closest("tr");
+  tr.style.transition = "opacity .18s, transform .18s";
+  tr.style.opacity = "0";
+  tr.style.transform = "translateX(40px)";
+
+  try {
+    await deleteDoc(doc(db, COL_REGISTROS, id));
+    toast("Registro eliminado");
+  } catch (e) {
+    console.error(e);
+    tr.style.opacity = "";
+    tr.style.transform = "";
+    toast("Error al eliminar");
   }
+});
 
-  function confirmModal() {
-    const valor = modalInput.value.trim();
-    if (!valor) { toast("Escribe un valor"); return; }
-    // Si el callback devuelve false, el modal permanece abierto
-    if (modalCallback && modalCallback(valor) === false) return;
-    closeModal();
-  }
+/* ---------- Modal ---------- */
+let modalCallback = null;
 
-  document.getElementById("modalOk").addEventListener("click", confirmModal);
-  document.getElementById("modalCancel").addEventListener("click", closeModal);
+function openModal(title, placeholder, cb) {
+  modalTitle.textContent = title;
+  modalInput.placeholder = placeholder;
+  modalInput.value = "";
+  modalCallback = cb;
+  overlay.classList.add("show");
+  setTimeout(() => modalInput.focus(), 260);
+}
 
-  modalInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") { e.preventDefault(); confirmModal(); }
-  });
+function closeModal() {
+  overlay.classList.remove("show");
+  modalInput.blur();
+  modalCallback = null;
+}
 
-  overlay.addEventListener("click", function (e) {
-    if (e.target === overlay) closeModal();
-  });
+async function confirmModal() {
+  const valor = modalInput.value.trim();
+  if (!valor) { toast("Escribe un valor"); return; }
+  const ok = await modalCallback(valor);
+  if (ok === false) return;
+  closeModal();
+}
 
-  /* ================= Añadir persona ================= */
-  document.getElementById("addPersona").addEventListener("click", function () {
-    openModal("Nueva persona", "Nombre de la persona", function (nombre) {
-      if (state.personas.some(p => p.toLowerCase() === nombre.toLowerCase())) {
-        toast("Esa persona ya existe");
-        return false;
-      }
-      state.personas.push(nombre);
-      save();
-      fillSelect(personaSel, state.personas, "Selecciona una persona", "Sin personas — toca +");
-      personaSel.value = nombre;
-      personaSel.classList.remove("placeholder");
+document.getElementById("modalOk").addEventListener("click", confirmModal);
+document.getElementById("modalCancel").addEventListener("click", closeModal);
+modalInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") { e.preventDefault(); confirmModal(); }
+});
+overlay.addEventListener("click", e => { if (e.target === overlay) closeModal(); });
+
+/* ---------- Añadir persona ---------- */
+document.getElementById("addPersona").addEventListener("click", () => {
+  openModal("Nueva persona", "Nombre de la persona", async nombre => {
+    if (personas.some(p => p.nombre.toLowerCase() === nombre.toLowerCase())) {
+      toast("Esa persona ya existe");
+      return false;
+    }
+    try {
+      await addDoc(collection(db, COL_PERSONAS), {
+        nombre, creado: Date.now()
+      });
       toast("Persona añadida");
-    });
+    } catch (e) {
+      console.error(e);
+      toast("Error: " + e.message);
+      return false;
+    }
   });
+});
 
-  /* ================= Añadir producto ================= */
-  document.getElementById("addProducto").addEventListener("click", function () {
-    openModal("Nuevo producto", "Nombre del producto", function (nombre) {
-      if (state.productos.some(p => p.toLowerCase() === nombre.toLowerCase())) {
-        toast("Ese producto ya existe");
-        return false;
-      }
-      state.productos.push(nombre);
-      save();
-      fillSelect(prodSel, state.productos, "Selecciona un producto", "Sin productos — toca +");
-      prodSel.value = nombre;
-      prodSel.classList.remove("placeholder");
+/* ---------- Añadir producto ---------- */
+document.getElementById("addProducto").addEventListener("click", () => {
+  openModal("Nuevo producto", "Nombre del producto", async nombre => {
+    if (productos.some(p => p.nombre.toLowerCase() === nombre.toLowerCase())) {
+      toast("Ese producto ya existe");
+      return false;
+    }
+    try {
+      await addDoc(collection(db, COL_PRODUCTOS), {
+        nombre, creado: Date.now()
+      });
       toast("Producto añadido");
-    });
+    } catch (e) {
+      console.error(e);
+      toast("Error: " + e.message);
+      return false;
+    }
   });
-
-  /* ================= Inicio ================= */
-  load();
-  render();
-
-})();
+});
 </script>
 </body>
 </html>
